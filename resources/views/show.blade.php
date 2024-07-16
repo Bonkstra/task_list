@@ -10,7 +10,6 @@
 		@endif
 		<li>{{ $task->created_at }}</li>
 		<li>{{ $task->updated_at }}</li>
-		<li>{{ $task->updated_at }}</li>
 	</ul>
 
 	<div>
