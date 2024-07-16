@@ -1,2 +1,2 @@
-# laravel_course_task_list
+# task_list
 A project created whilst following a Laravel course
