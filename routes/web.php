@@ -7,13 +7,12 @@ use App\Http\Requests\TaskRequest;
 use Illuminate\Support\Facades\Route;
 
 Route::get('tasks', function() {
-    return view('index', ['tasks' => Task::latest()->get()]); // Gets the latest record based on the created_at column
+    return view('index', ['tasks' => Task::latest()->paginate(5)]); // Gets the latest record based on the created_at column and paginates them
 })->name('tasks.index');
 
 Route::view('tasks/create', 'create')->name('tasks.create');
 Route::post('tasks/create', function(TaskRequest $request) {
     $task = Task::create($request->validated());
-
     return redirect()->route('tasks.show', ['task' => $task->id])->with('success', 'Task created successfully!');
 })->name('tasks.store');
 
@@ -22,7 +21,6 @@ Route::get('tasks/edit/{task}', function($task) {
 })->name('tasks.edit');
 Route::put('tasks/edit/{task}', function(Task $task, TaskRequest $request) {
     $task->update($request->validated());
-
     return redirect()->route('tasks.show', ['task' => $task->id])->with('success', 'Task edited successfully!');
 })->name('tasks.update');
 
@@ -32,7 +30,6 @@ Route::get('tasks/{task}', function(Task $task) {
 
 Route::delete('tasks/delete/{task}', function(Task $task) {
     $task->delete();
-
     return redirect()->route('tasks.index')->with('Task deleted successfully');
 })->name('tasks.destroy');
 
