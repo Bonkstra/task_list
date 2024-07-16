@@ -12,7 +12,7 @@
 @endsection
 
 @section('content')
-	<form method="POST" action="{{ route('tasks.update', $task->id) }}">
+	<form method="POST" action="{{ route('tasks.update', ['task' => $task]) }}">
 		@method('PUT')
 		@csrf
 		<div>
@@ -35,7 +35,7 @@
 			@enderror
 		</div>
 		<div>
-			<button type="submite">Add Task</button>
+			<button type="submit">Edit Task</button>
 		</div>
 	</form>
 	<a href="{{ route('tasks.index') }}"><p>Back</p></a>

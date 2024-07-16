@@ -34,7 +34,7 @@
 			@enderror
 		</div>
 		<div>
-			<button type="submite">Add Task</button>
+			<button type="submit">Add Task</button>
 		</div>
 	</form>
 	<a href="{{ route('tasks.index') }}"><p>Back</p></a>
