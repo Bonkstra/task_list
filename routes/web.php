@@ -33,6 +33,11 @@ Route::delete('tasks/delete/{task}', function(Task $task) {
     return redirect()->route('tasks.index')->with('Task deleted successfully');
 })->name('tasks.destroy');
 
+Route::put('tasks/toggle-complete/{task}', function(Task $task) {
+    $task->toggleComplete();
+    return redirect()->back()->with('Task updated successfully');
+})->name('tasks.toggle-complete');
+
 Route::fallback(function() { // Fallback route for any request that is not a valid route
     return redirect()->route('tasks.index');
 });
